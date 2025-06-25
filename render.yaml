@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: ev-charging-api
+    env: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8000
+      - key: PYTHONUNBUFFERED
+        value: "1"
+
+  - type: web
+    name: ev-charging-api
+    env: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8000
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    buildCommand: docker build -t ev-charging-api .
+    startCommand: docker run -p 8000:8000 ev-charging-api 
